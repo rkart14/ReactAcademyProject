@@ -8,7 +8,7 @@ import { Table } from "./table";
 export const GridItem: FC<IGridItem> = (item) => {
     const [{ isOver }, drop] = useDrop(() => ({
         accept: ItemTypes.TABLE,
-        drop: () => alert("moving to " + item.index),
+        drop: () => console.log("moved to" + item.index),
         canDrop: ()=> !item.isTableInitialized,
         collect: monitor => ({
             isOver: !!monitor.isOver(),

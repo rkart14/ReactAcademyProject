@@ -7,6 +7,7 @@ export const Table: FC<IGridItem> = ({ table, isTableInitialized, index }) => {
     const [{ isDragging }, drag] = useDrag(() => ({
         type: ItemTypes.TABLE,
         canDrag: () => isTableInitialized,
+        end: ()=> console.log("started from " + index),
         collect: monitor => ({
             isDragging: !!monitor.isDragging(),
         }),
