@@ -50,6 +50,11 @@ namespace RestaurantManagementSystem
                 //options.OperationFilter<SecurityRequirementsOperationFilter>();
                 //options.OperationFilter<AppendAuthorizeToSummaryOperationFilter>();
             });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+            });
 
         }
 
@@ -64,6 +69,7 @@ namespace RestaurantManagementSystem
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors("AllowSpecificOrigin");
 
             app.UseAuthorization();
 

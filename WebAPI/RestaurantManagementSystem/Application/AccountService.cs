@@ -35,6 +35,7 @@ namespace RestaurantManagementSystem.Application
             {
                 Token = jwtSecurityTokenGenerator.Generate(claims),
                 Email = user.Email,
+                IsInitialized = user.Restaurant.IsInitialized(),
                 RestaurantName = user.Restaurant.Name
             });
         }
@@ -52,6 +53,8 @@ namespace RestaurantManagementSystem.Application
                 Manager = user,
                 ManagerEmail = user.Email,
             };
+            user.Restaurant = restaurant;
+            user.RestaurantId = restaurant.Id;
             var savedRestaurant = await userRepository.Create(user);
             await restaurantRepository.Add(restaurant);
             var claims = new List<Claim>

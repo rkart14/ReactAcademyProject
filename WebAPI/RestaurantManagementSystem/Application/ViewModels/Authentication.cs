@@ -11,6 +11,8 @@ namespace RestaurantManagementSystem.Application.ViewModels
 
         public string RestaurantName { get; set; }
 
+        public bool IsInitialized { get; set; }
+
         public string Token { get; set; }
 
     }
